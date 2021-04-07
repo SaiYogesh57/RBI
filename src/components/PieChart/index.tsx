@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "./index.css"
 interface PropsType {
-  activate: (color: string) => any;
-  deactivate: () => any;
+  activate: (color: string,segment:string) => any;
+  deactivate: (segment:string) => any;
   isHover: boolean;
   color: string;
 }
@@ -63,7 +63,7 @@ const PieChart = (props: PropsType) => {
         ></circle>
 
         <circle
-          onMouseOver={() => props.activate("Guest")}
+          onMouseOver={() => props.activate("Guest","Complaints")}
           onMouseOut={() => setTimeout(props.deactivate, 2000)}
           id="rightCircle"
           className={props.isHover&&props.color==="Guest"?"donutSegmentShadedGuest":""}
@@ -77,7 +77,7 @@ const PieChart = (props: PropsType) => {
           stroke-dashoffset="25"
         ></circle>
         <circle
-          onMouseOver={() => props.activate("Guest")}
+          onMouseOver={() => props.activate("Guest","Window")}
           onMouseOut={() => setTimeout(props.deactivate, 2000)}
           id="rightCircle"
           className={props.isHover&&props.color==="Guest"?"donutSegmentShadedGuest":""}
@@ -91,7 +91,7 @@ const PieChart = (props: PropsType) => {
           stroke-dashoffset="103"
         ></circle>
         <circle
-          onMouseOver={() => props.activate("Team")}
+          onMouseOver={() => props.activate("Team","Training")}
           onMouseOut={() => setTimeout(props.deactivate, 2000)}
           className={props.isHover&&props.color==="Team"?"donutSegmentShadedTeam":""}
           cx={cXD1}
@@ -104,7 +104,7 @@ const PieChart = (props: PropsType) => {
           stroke-dashoffset="92"
         ></circle>
         <circle
-          onMouseOver={() => props.activate("Team")}
+          onMouseOver={() => props.activate("Team","Turnover")}
           onMouseOut={() => setTimeout(props.deactivate, 2000)}
           className={props.isHover&&props.color==="Team"?"donutSegmentShadedTeam":""}
           cx={cXD2}
@@ -118,7 +118,7 @@ const PieChart = (props: PropsType) => {
         ></circle>
         <circle
           className={props.isHover&&props.color==="Standard"?"donutSegmentShadedStandard":""}
-          onMouseOver={() => props.activate("Standard")}
+          onMouseOver={() => props.activate("Standard","Standards")}
           onMouseOut={() => setTimeout(props.deactivate, 2000)}
           cx={cxL}
           cy={cyL}

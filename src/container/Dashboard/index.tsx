@@ -43,7 +43,7 @@ const backendData={
      {
         header:"Team",
         detailsData:[{
-           detailHead: "Average Complaints Ratio",
+           detailHead: "Average Training Rate",
            numberValue: "16",
            triangle: "../../assets/Delta indicator.svg",
            rating: "Reduce by 3",
@@ -52,7 +52,7 @@ const backendData={
            tooltiptitle:'The thresholds for grade storing as follows:',
            tooltipOptions:["A:0.0 to 0.0","B:0.0 to 0.0","C:0.0 to 0.0","D:0.0 to 0.0"]
        },{
-           detailHead: "Average Windows Time",
+           detailHead: "Average Turnover Rate",
            numberValue: "70s",
            triangle: "../../assets/Delta indicator.svg",
            rating: "Reduce by 5s",
@@ -65,7 +65,7 @@ const backendData={
     {
         header:"Standard",
         detailsData:[{
-           detailHead: "Average Complaints Ratio",
+           detailHead: "Brand Standards",
            numberValue: "15",
            triangle: "../../assets/Delta indicator.svg",
            rating: "Reduce by 5",
@@ -82,6 +82,7 @@ const Dashboard=()=>{
    const [stars,setStars]=useState(2.1) 
    const [isHover,setIsHover]=useState(false)
    const [color,setColor] = useState("")
+   const [segment,setSegment] = useState("")
    const [timePeriod, setTimePeriod] = useState('current');
    const [dropDown, setDropDown] = useState([{name:"Current",value:"current"},{name:"July 2020 to Dec 2020",value:"July 2020 to Dec 2020"},{name:"Jan 2020 to Dec 2020",value:"Jan 2020 to Dec 2020"}]);
    const [data,setData]=React.useState<backend>() //for setting the variable with type
@@ -89,14 +90,17 @@ const Dashboard=()=>{
    useEffect(() => {
    setData(backendData) //this will set state to data variable from backenddata
   }, []);
-  const activateHover=(color:string)=>{
+  const activateHover=(color:string,segment:string)=>{
    setColor(color)
    setIsHover(true)
-   console.log("setted",isHover,color)
+   setSegment(segment)
+   console.log("segment",segment)
   }
-  const deActivateHover=()=>{
+  const deActivateHover=(segment:string)=>{
+     console.log("deactivated")
    setColor("")
    setIsHover(false)
+   setSegment(segment)
   }
    return(
       <div className="root">
@@ -139,7 +143,7 @@ const Dashboard=()=>{
           </div>
          <div className="tileContainer">
          <PieChart activate={activateHover} deactivate={deActivateHover} isHover={isHover}   color={color}/>
-            {userDetails.map((userDetail,index)=><Tile activate={activateHover} isHover={isHover} color={color} deactivate={deActivateHover} key={index} header={userDetail.header} detailsData={userDetail.detailsData}/>
+            {userDetails.map((userDetail,index)=><Tile activate={activateHover} isHover={isHover} segment={segment} color={color} deactivate={deActivateHover} key={index} header={userDetail.header} detailsData={userDetail.detailsData}/>
 )}</div>
          <RestaurantTable/>
       </div>

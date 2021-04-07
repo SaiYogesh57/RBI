@@ -23,9 +23,9 @@ padding-bottom: 15px;
     justify-content: space-between;
 }
 .tileContainer{
-    display: grid;
-    grid-template-columns: repeat(4,auto);
-    grid-column-gap:2% ;
+    display: flex;
+    /* grid-template-columns: repeat(4,auto);
+    grid-column-gap:2% ; */
    
 }
 .timePeriodDropDown {
