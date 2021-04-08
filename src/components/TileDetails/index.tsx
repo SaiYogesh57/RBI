@@ -15,10 +15,10 @@ interface DetailProps {
   stars:number
   tooltiptitle:string;
   tooltipOptions:string[];
-  activate: (color: string,segment:string) => void
+  activate: (segment:string) => void
   deactivate: (segment:string) => void
   isHover:boolean;
-  color:string;
+  
   segment:string;
 }
   const useStyles = makeStyles((theme: Theme) =>
@@ -55,39 +55,17 @@ const TileDetails = (props: DetailProps) => {
     
     useEffect(() => {
       if (document) {
-        console.log("propSegment",props.segment)
+        
           if (props.isHover) {
+            
               const doc = document.getElementById(props.segment)
-              if (props.segment == "Complaints") {
-                  if (doc) {
-                      doc.style.transform = "scale(1.05,1.1)"
-                      doc.style.boxShadow = "-9px 10px 18px -8px rgba(0, 0, 0, 0.73)"
-                  }
-              }
-              else if (props.segment == "Windows") {
-                  if (doc) {
-                    doc.style.transform = "scale(1.05,1.1)"
-                    doc.style.boxShadow = "-9px 10px 18px -8px rgba(0, 0, 0, 0.73)"
-                  }
-              }
-              else if (props.segment == "Training") {
-                  if (doc) {
-                    doc.style.transform = "scale(1.05,1.1)"
-                    doc.style.boxShadow = "-9px 10px 18px -8px rgba(0, 0, 0, 0.73)"
-                  }
-              }
-              else if (props.segment == "Turnover") {
-                if (doc) {
-                  doc.style.transform = "scale(1.05,1.1)"
-                  doc.style.boxShadow = "-9px 10px 18px -8px rgba(0, 0, 0, 0.73)"
-                }
-            }
-            else if (props.segment == "Standards") {
+              console.log("propSegment",props.segment)
               if (doc) {
                 doc.style.transform = "scale(1.05,1.1)"
                 doc.style.boxShadow = "-9px 10px 18px -8px rgba(0, 0, 0, 0.73)"
-              }
-          }
+            }
+            
+          
           }
           else {
               const doc = document.getElementById(props.segment)
@@ -101,7 +79,7 @@ const TileDetails = (props: DetailProps) => {
       
   }, [props.isHover])
   return (
-    <div className={`tileDetails ${props.header}Tile`} id={`${props.segment}`} onMouseOver={()=>props.activate(props.header,props.detailHead.split(" ")[1])} onMouseLeave={()=>props.deactivate(props.detailHead.split(" ")[1])}>
+    <div className={`tileDetails ${props.header}Tile`} id={`${props.detailHead.split(" ")[1]}`} onMouseOver={()=>props.activate(props.detailHead.split(" ")[1])} onMouseLeave={()=>props.deactivate(props.detailHead.split(" ")[1])}>
        <Tooltip title={toolTip()} placement="left-start" className="tooltip" classes={{tooltip:classes.customWidth}}><InfoOutlinedIcon className="infoIcon"/></Tooltip>
       <Typography className="tileObjectHeading">{props.detailHead}</Typography>
       

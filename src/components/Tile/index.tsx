@@ -14,10 +14,10 @@ interface TileProps {
         tooltipOptions: string[]
     }[]
 
-    activate: (color: string,segment:string) => void
+    activate: (segment:string) => void
     deactivate: (segment:string) => void
     isHover: boolean
-    color: string
+    
     segment:string
 }
 const Tile = (props: TileProps) => {
@@ -30,7 +30,7 @@ return (
     <div ref={tileRef}  className={`tile ${props.header}`}>
         
         <div className="tiles">
-            {props.detailsData.map((detail) => <TileDetails header={props.header} {...detail}  activate={props.activate} deactivate={props.deactivate} color={props.color} segment={props.segment} isHover={props.isHover}/>)}
+            {props.detailsData.map((detail) => <TileDetails header={props.header} {...detail}  activate={props.activate} deactivate={props.deactivate}  segment={props.segment} isHover={props.isHover}/>)}
         </div>
     </div>
     </div>

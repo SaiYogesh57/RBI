@@ -81,7 +81,7 @@ const backendData={
 const Dashboard=()=>{
    const [stars,setStars]=useState(2.1) 
    const [isHover,setIsHover]=useState(false)
-   const [color,setColor] = useState("")
+   
    const [segment,setSegment] = useState("")
    const [timePeriod, setTimePeriod] = useState('current');
    const [dropDown, setDropDown] = useState([{name:"Current",value:"current"},{name:"July 2020 to Dec 2020",value:"July 2020 to Dec 2020"},{name:"Jan 2020 to Dec 2020",value:"Jan 2020 to Dec 2020"}]);
@@ -90,15 +90,14 @@ const Dashboard=()=>{
    useEffect(() => {
    setData(backendData) //this will set state to data variable from backenddata
   }, []);
-  const activateHover=(color:string,segment:string)=>{
-   setColor(color)
+  const activateHover=(segment:string)=>{
+   
    setIsHover(true)
    setSegment(segment)
    console.log("segment",segment)
   }
   const deActivateHover=(segment:string)=>{
      console.log("deactivated")
-   setColor("")
    setIsHover(false)
    setSegment(segment)
   }
@@ -130,8 +129,11 @@ const Dashboard=()=>{
         </Box>
 
          </div>
+         <div className="headContent">
+         <PieChart activate={activateHover} deactivate={deActivateHover} isHover={isHover} segment={segment}  />
+         <div className="tileContainer">
          
-          <div className="AverageStars">
+         <div className="AverageStars">
              <Typography className="averageText"> Average Star Rating:{stars}/5 stars</Typography>
             <div>
             {Array(Math.floor(stars)).fill(0).map((_,index)=><img  key={index} src={process.env.PUBLIC_URL+"/assets/Star - medium.svg"} className="stars"></img>)}
@@ -141,10 +143,13 @@ const Dashboard=()=>{
             </div>
         
           </div>
-         <div className="tileContainer">
-         <PieChart activate={activateHover} deactivate={deActivateHover} isHover={isHover}   color={color}/>
-            {userDetails.map((userDetail,index)=><Tile activate={activateHover} isHover={isHover} segment={segment} color={color} deactivate={deActivateHover} key={index} header={userDetail.header} detailsData={userDetail.detailsData}/>
+          <div className="tilesGrid">
+          {userDetails.map((userDetail,index)=><Tile activate={activateHover} isHover={isHover} segment={segment}  deactivate={deActivateHover} key={index} header={userDetail.header} detailsData={userDetail.detailsData}/>
 )}</div>
+          </div>
+         </div>
+         
+           
          <RestaurantTable/>
       </div>
    )

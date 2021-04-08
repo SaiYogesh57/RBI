@@ -24,9 +24,17 @@ padding-bottom: 15px;
 }
 .tileContainer{
     display: flex;
+    flex-direction: column;
+    margin-left:2% !important
     /* grid-template-columns: repeat(4,auto);
     grid-column-gap:2% ; */
    
+}
+.tilesGrid{
+  display: flex;
+}
+.headContent{
+  display: flex;
 }
 .timePeriodDropDown {
     background:#fff4cc;
@@ -46,7 +54,7 @@ padding-bottom: 15px;
 .AverageStars{
   display: flex;
   flex-direction: column;
-  margin-left: 25%;
+  
 }
 .averageText{
   color:#484848 !important;
