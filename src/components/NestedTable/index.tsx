@@ -43,7 +43,7 @@ const useStyles = makeStyles((theme: Theme) =>({
     minWidth: 120,
   },
 }));
-interface NestedTableType{
+export interface NestedTableType{
   masterData:{
   name: string,
   noOfRestaurants: string,
@@ -68,7 +68,10 @@ restaurants:[
   }
 ]
 }
-
+interface TableProps{
+  NestedTable:NestedTableType[],
+  role:string
+}
 const row:NestedTableType[]=[
 {
  masterData: {  
@@ -98,7 +101,7 @@ restaurants:[
 ]
 
 
-const NestedTable = (props:NestedTableType[]) => {
+const NestedTable = (props:TableProps) => {
   const classes = useStyles();
   const [isVisible,setIsVisible]=useState(false)
   const [expandUser,setExpandUser]=useState("")
@@ -107,17 +110,17 @@ const NestedTable = (props:NestedTableType[]) => {
   const [sortValue,setSortValue]=useState("")
   const [filterValue,setFilterValue]=useState("")
   useEffect(()=>{
-   
-    console.log("props",typeof props.entries)
+    var userRows=Object.values(props.NestedTable)
+  
+    userRows=userRows.filter(userRow=>userRow.masterData.role==props.role.toLocaleUpperCase())
     
-    setRows(props)
-    console.log("rows",rows)
+    setRows(userRows)
   },[props])
   useEffect(()=>{ 
     setFilteredRows(rows);
   },[rows])
   const handleFilter=(value:string)=>{
-    if(value=="clear") setFilteredRows(rows)
+    if(value=="clear") {setFilteredRows(rows);setFilterValue("")}
   else{
     setFilterValue(value)
   
@@ -255,9 +258,7 @@ const NestedTable = (props:NestedTableType[]) => {
           label="Age"
         >
           
-          <MenuItem value={"Alan"}>Alan</MenuItem>
-          <MenuItem value={"Leon"}>Leon</MenuItem>
-          <MenuItem value={"Bob"}>Bob</MenuItem>
+          {rows.map(filteredRow=><MenuItem value={filteredRow.masterData.name.split(" ")[0]}>{filteredRow.masterData.name}</MenuItem>)}
           <MenuItem value={"clear"}>clear filter</MenuItem>
         </Select>
 </FormControl>
