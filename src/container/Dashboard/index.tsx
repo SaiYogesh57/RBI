@@ -232,7 +232,7 @@ const Dashboard=()=>{
         </div>
         </div>
          
-         {viewTable=="restaurants"&&<RestaurantTable  />}
+         {viewTable=="restaurants"&&<RestaurantTable {...rows}  />}
          {rowsUpdated&&viewTable!=="restaurants"&&<NestedTable NestedTable={rows} role={viewTable}/>}
       </div>
    )
