@@ -28,8 +28,7 @@ const backendData={
             rating: "Reduce by 3",
             previousValue: "8",
             stars:2,
-            tooltiptitle:'The thresholds for grade storing as follows:',
-            tooltipOptions:["A:0.0 to 0.0","B:0.0 to 0.0","C:0.0 to 0.0","D:0.0 to 0.0"]
+
         },{
             detailHead: "Average Windows Time",
             numberValue: "70s",
@@ -37,8 +36,7 @@ const backendData={
             rating: "Reduce by 5s",
             previousValue: "83s",
             stars:3.5,
-            tooltiptitle:'The thresholds for grade storing as follows:',
-            tooltipOptions:["A:0.0 to 0.0","B:0.0 to 0.0","C:0.0 to 0.0","D:0.0 to 0.0"]
+
         }]
      },
      {
@@ -50,8 +48,7 @@ const backendData={
            rating: "Reduce by 3",
            previousValue: "8",
            stars:2,
-           tooltiptitle:'The thresholds for grade storing as follows:',
-           tooltipOptions:["A:0.0 to 0.0","B:0.0 to 0.0","C:0.0 to 0.0","D:0.0 to 0.0"]
+         
        },{
            detailHead: "Average Turnover Rate",
            numberValue: "70s",
@@ -59,8 +56,7 @@ const backendData={
            rating: "Reduce by 5s",
            previousValue: "83s",
            stars:3,
-           tooltiptitle:'The thresholds for grade storing as follows:',
-           tooltipOptions:["A:0.0 to 0.0","B:0.0 to 0.0","C:0.0 to 0.0","D:0.0 to 0.0"]
+
        }]
     },
     {
@@ -72,8 +68,7 @@ const backendData={
            rating: "Reduce by 5",
            previousValue: "8",
            stars:2,
-           tooltiptitle:'The thresholds for grade storing as follows:',
-           tooltipOptions:["A:0.0 to 0.0","B:0.0 to 0.0","C:0.0 to 0.0","D:0.0 to 0.0"]
+
         }
        ]
     }
