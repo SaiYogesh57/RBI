@@ -125,7 +125,7 @@ const Header: React.FC<Props> = () => {
       <AppBar
         // color="inherit"
         position="sticky"
-        className={classes.appBarBK}
+        className={brandName=="BK"?classes.appBarBK:classes.appBar}
       >
         <Toolbar className={classes.toolbar}>
           <List className={classes.navList}>
