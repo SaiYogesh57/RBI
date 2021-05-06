@@ -67,6 +67,18 @@ const useStyles = makeStyles((theme: Theme) => ({
       zIndex: 3000,
     },
   },
+  appBarBK:{
+    display: "flex",
+    width: "100%",
+    alignItems: "center",
+    flexFlow: "row nowrap",
+    justifyContent: "space-between",
+    // padding: "10px 0px",
+    backgroundColor: "#502314",
+    [theme.breakpoints.down("sm")]: {
+      zIndex: 3000,
+    },
+  },
   brandLogoOnScroll: {
     // position: "absolute",
     width: "60px",
@@ -113,7 +125,7 @@ const Header: React.FC<Props> = () => {
       <AppBar
         // color="inherit"
         position="sticky"
-        className={classes.appBar}
+        className={classes.appBarBK}
       >
         <Toolbar className={classes.toolbar}>
           <List className={classes.navList}>

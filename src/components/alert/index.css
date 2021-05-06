@@ -23,7 +23,12 @@
 
 .alertType{
     font: normal normal bold 1rem Chicken SansBold;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 .alertMessage{
     font: normal normal normal 1rem Chicken Sans !important;
+    display: flex;
+    align-items: center;
+    padding-left: 2px;
 }
