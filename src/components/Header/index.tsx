@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import AppBar from "@material-ui/core/AppBar";
 import Button from "@material-ui/core/Button";
@@ -111,7 +111,7 @@ padding:"2px"
 const Header: React.FC<Props> = () => {
   const classes = useStyles();
   
-  
+  const [brandName,setBrandName]=useState("BK")
   const appBarClasses = classNames({
     [classes.appBar]: true,
     [classes.absolute]: true,
@@ -133,7 +133,7 @@ const Header: React.FC<Props> = () => {
               <Button >
                 <img
                   alt="logo"
-                  src="../../assets/PLK logo.svg"
+                  src={brandName=="BK"?"../../assets/burger-king.svg":"../../assets/PLK logo.svg"}
                   className={classes.brandLogoOnScroll}
                 />
               </Button>
