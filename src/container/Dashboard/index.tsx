@@ -163,6 +163,7 @@ const Dashboard=()=>{
   }
    return(
       <div className="root">
+        <Alert alertType="Warning" actionable={true}/>
         <InlineAlert alertType="Warning" />
          <Typography className="Navigation">Home&gt;July 2020 to Dec 2020</Typography>
          <div className="maindiv">
