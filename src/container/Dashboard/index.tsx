@@ -8,6 +8,7 @@ import NestedTable from '../../components/NestedTable'
 import PieChart from '../../components/PieChart/index'
 import RestaurantTable from '../../components/Table/index'
 import Tile from '../../components/Tile/index'
+import { tabledata } from "./Table.json"
 import "./index.css"
 
 const backendData={
@@ -88,7 +89,7 @@ const backendData={
   turnoverRate: { current: string; previous: string },
   standards: { current: string; previous: string }
 },
-restaurants:[
+restaurants:
   {
     name: string,
     place: string,
@@ -98,8 +99,8 @@ restaurants:[
     trainingRate: { current: string; previous: string },
     turnoverRate: { current: string; previous: string },
     standards: { current: string; previous: string }
-  }
-]
+  }[]
+
 }
 
 const row:NestedTableType[]=[
@@ -142,8 +143,12 @@ const Dashboard=()=>{
    //setData(backendData)
    useEffect(() => {
    setData(backendData) //this will set state to data variable from backenddata
-   axios.get("../../assets/ArlTable.json").then(res=>setRows(res.data)).catch((err)=>{throw(err)})
-  
+   //axios.get("../../assets/ArlTable.json").then(res=>setRows(res.data)).catch((err)=>{throw(err)})
+   let arr=Object.values(tabledata)
+   let checkArr:NestedTableType[]=row
+   arr.map((row)=>checkArr.push(row))
+   checkArr.shift()
+  setRows(checkArr)
   }, []);
   useEffect(() => {
    console.log("rowsUpdated",rows)

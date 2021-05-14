@@ -58,7 +58,7 @@ export interface NestedTableType{
   turnoverRate: { current: string; previous: string },
   standards: { current: string; previous: string }
 },
-restaurants:[
+restaurants:
   {
     name: string,
     place: string,
@@ -68,8 +68,8 @@ restaurants:[
     trainingRate: { current: string; previous: string },
     turnoverRate: { current: string; previous: string },
     standards: { current: string; previous: string }
-  }
-]
+  }[]
+
 }
 interface TableProps{
   NestedTable:NestedTableType[],
