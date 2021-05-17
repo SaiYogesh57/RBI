@@ -235,8 +235,8 @@ const Dashboard=()=>{
         </div>
         </div>
          
-         {viewTable=="restaurants"&&<RestaurantTable rows={rows}  />}
-         {rowsUpdated&&viewTable!=="restaurants"&&<NestedTable NestedTable={rows} role={viewTable}/>}
+         {viewTable=="restaurants"&&<RestaurantTable />}
+         {rowsUpdated&&viewTable!=="restaurants"&&<NestedTable role={viewTable}/>}
       </div>
    )
 }
