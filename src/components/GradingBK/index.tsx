@@ -3,9 +3,33 @@ import "./index.scss"
 import { data } from "./grades-data.json"
 import Text from '../Charts/Elements/Text';
 import useWindowDimensions from '../Charts/Elements/WindowSize';
-const GradingPage=()=>{
+import axios from 'axios';
+const GradingPageBK=()=>{
     const
     { windowWidth } = useWindowDimensions()
+    const userDetails:any={}
+        useEffect(() => {
+            axios({
+            method: 'POST',
+            // url: '../dashboard2.json'
+            url: 'https://zu3hlogvcl.execute-api.us-east-1.amazonaws.com/dev/get-metrics',
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Content-Type': 'application/json',
+              },
+            })
+            .then( res => res.data )
+            .then( res => {
+            const { data } = res.data ;
+            console.log(data)
+            const dataObj = {
+            userDetails: {...userDetails }
+            };
+           
+            })
+            },[])
+          
+  
     return(
         <div className="grading-container">
             
@@ -39,4 +63,4 @@ const GradingPage=()=>{
     )
 }
 
-export default GradingPage;
+export default GradingPageBK;

@@ -9,7 +9,7 @@ import { data } from './textPrompts.json';
 import './Welcome.scss';
 
 
-const Welcome = () => {
+const WelcomeBK = (props:any) => {
   const [display, setDisplay] = useState(0);
   const
     { windowWidth, windowHeight } = useWindowDimensions(),
@@ -20,7 +20,7 @@ const Welcome = () => {
       ((j) => {
         setTimeout(() => {
           
-          if (j === data.length) { setDisplay(0); history.push('/dashboard') }
+          if (j === data.length) { setDisplay(0); props.history.replace('/grading') }
           else setDisplay(display => display + 1);
         }, j * 4000);
       })(i);
@@ -28,7 +28,7 @@ const Welcome = () => {
   },[])
   ;
   const
-    componentRef = useRef(),
+    componentRef = useRef<HTMLDivElement|null>(null),
     { width, height } = useDivDimensions(componentRef)
     ;
   
@@ -47,6 +47,7 @@ const Welcome = () => {
               offsetY={ display==1?50:70}
               textAnchor='left'
               content='Hi, Joe Jolly!'
+              split={''}
         />
         <rect x={0} y={450} height={ 150 } width={ width } fill='#FFFFFF'></rect>
         {
@@ -58,6 +59,7 @@ const Welcome = () => {
                          offsetY={ 70 + (o.offset ? o.offset.y : 0) }
                          textAnchor='left'
                          content={ o.text }
+                         split={''}
             />
           })
         }
@@ -68,6 +70,7 @@ const Welcome = () => {
               offsetY={ 70 + 50 }
               textAnchor='left'
               content= "Welcome to your Analytics Dashboard."
+              split={''}
         />
         <Text className={ display === 3 ? "text header-greeting"  : "text header-greeting not-visible" }
               height={ 0 }
@@ -76,6 +79,7 @@ const Welcome = () => {
               offsetY={ 70 + 310 }
               textAnchor='left'
               content= "This is your scorecard timeline."
+              split={''}
         />
         <image
           width={ 161 }
@@ -132,4 +136,4 @@ const Welcome = () => {
   )
 };
 
-export default Welcome;
+export default WelcomeBK;
