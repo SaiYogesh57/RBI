@@ -145,7 +145,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   }
 }));
 
-const LeftLinks: React.FC<Props> = () => {
+const RightLinks: React.FC<Props> = () => {
   const classes = useStyles();
   const [menuOpen,setMenuOpen]=React.useState(false)
   const handleMenu=()=>{
@@ -185,6 +185,7 @@ const LeftLinks: React.FC<Props> = () => {
       </Button>
         {
           menuOpen&& <div className={classes.LogOut}>
+         <img src="../../assets/LogoutIcon.svg"></img>
           Log Out
        </div>
         }
@@ -201,4 +202,4 @@ const LeftLinks: React.FC<Props> = () => {
 
 };
 
-export default LeftLinks;
+export default RightLinks;
