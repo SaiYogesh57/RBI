@@ -3,9 +3,9 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import {
-  
+
   ListItem,
-  
+
   Theme,
 } from "@material-ui/core";
 
@@ -23,14 +23,14 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   buttonBordered: {
-    display:"flex",
-    borderRadius:"50%",
+    display: "flex",
+    borderRadius: "50%",
     color: "#ffffff",
-   border:"2px solid #ffffff",
-  width:"30px",
-  height:"30px",
-  alignItems:"center",
-  justifyContent:"center"
+    border: "2px solid #ffffff",
+    width: "30px",
+    height: "30px",
+    alignItems: "center",
+    justifyContent: "center"
   },
   titleTextUnderline: {
     flexGrow: 1,
@@ -125,11 +125,33 @@ const useStyles = makeStyles((theme: Theme) => ({
     fontWeight: "bold",
     textAlign: "left",
   },
+  LogOut: {
+    position: "relative",
+    top: "55px",
+    
+    background: "#4A25181A 0% 0% no-repeat padding-box",
+    opacity: 1,
+    width: '120px',
+    height: "44px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    font: "normal normal normal 20px Flame Sans",
+    letterSpacing: '0px',
+    color: "#4A2518"
+  },
+  menuBar:{
+    marginRight:"-100px"
+  }
 }));
 
 const LeftLinks: React.FC<Props> = () => {
   const classes = useStyles();
-return(
+  const [menuOpen,setMenuOpen]=React.useState(false)
+  const handleMenu=()=>{
+    setMenuOpen(!menuOpen)
+  }
+  return (
     <ListItem className={classes.navItem}>
 
       <Button>
@@ -138,39 +160,45 @@ return(
           color="inherit"
           noWrap
           className={
-              classes.titleText
+            classes.titleText
           }
         >
           My Grading
         </Typography>
       </Button>
       <Button>
-      <Typography
+        <Typography
           variant="h5"
           color="inherit"
           noWrap
           className={
-              classes.titleText
+            classes.titleText
           }
         >
           Grading Calculation
         </Typography>
       </Button>
-      <div className={classes.buttonBordered}>
-      
-          ML
-        
-      </div>
-          </ListItem>
-
-)
-
-
-    
+      <Button onClick={handleMenu}  className={
+            menuOpen?classes.menuBar:""
+          }>
+        <img src="../../assets/MenuIcon.svg"></img>
+      </Button>
+        {
+          menuOpen&& <div className={classes.LogOut}>
+          Log Out
+       </div>
+        }
      
-  
+    </ListItem>
 
- 
+  )
+
+
+
+
+
+
+
 };
 
 export default LeftLinks;
