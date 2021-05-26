@@ -181,3 +181,7 @@ right: 0;
     font-size: 0.8rem;
     text-transform: capitalize !important;
 }
+.exportIcon{
+    margin-left: 20px;
+    margin-right: 20px;
+}

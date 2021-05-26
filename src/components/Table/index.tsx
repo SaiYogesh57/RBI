@@ -112,14 +112,14 @@ const RestaurantTable = () => {
     setCancelClicked(true)
   }
   return (
-    <div>
+    <div className="restaurantTable">
        <div className="tableUtils">
       <div className="filtered">
         <div className="filterHeadings"><Typography>Filter By</Typography>
-       {!cancelClicked&&utilClicked==="filter"?<ExpandLess onClick={()=>setCancelClicked(true)}/>:<ExpandMoreIcon onClick={()=>{setCancelClicked(false);setUtilClicked("filter")}}/>}
+       {!cancelClicked&&utilClicked==="filter"?<ExpandLess onClick={()=>setCancelClicked(true)}/>:<ExpandMoreIcon id="filter-button" onClick={()=>{setCancelClicked(false);setUtilClicked("filter")}}/>}
         
         </div>
-      <div className={!cancelClicked&&utilClicked==="filter"?"filteredHovered":"filteredHoveredCancel"}>
+      <div id='filter-div' className={!cancelClicked&&utilClicked==="filter"?"filteredHovered":"filteredHoveredCancel"}>
             <FormControl variant="outlined" className={classes.formControl}>
           <Button className="filterButtons" >DMA:(Designated Market Area)</Button>
           <Button className="filterButtons">North</Button>
@@ -133,15 +133,16 @@ const RestaurantTable = () => {
 
 <div className="filtered">
         <div className="filterHeadings"><Typography>Sort By</Typography>
-       {!cancelClicked&&utilClicked==="sort"?<ExpandLess onClick={()=>setCancelClicked(true)}/>:<ExpandMoreIcon onClick={()=>{setCancelClicked(false);setUtilClicked("sort")}}/>}
+       {!cancelClicked&&utilClicked==="sort"?<ExpandLess onClick={()=>setCancelClicked(true)}/>:<ExpandMoreIcon id="sort-button" onClick={()=>{setCancelClicked(false);setUtilClicked("sort")}}/>}
         
         </div>
-        <div  className={!cancelClicked&&utilClicked==="sort"?"filteredHovered":"filteredHoveredCancel"}>
+        <div id="sort-div" className={!cancelClicked&&utilClicked==="sort"?"filteredHovered":"filteredHoveredCancel"}>
 <FormControl variant="outlined" className={classes.formControl}>
           <Button onClick={()=>handleSort("low")}>Low to High</Button>
           <Button onClick={()=>handleSort("high")}>High to Low</Button>
 </FormControl></div>
 </div>
+<img src="../../assets/export excel.svg" className='exportIcon'></img>
 </div>
 
 
@@ -170,7 +171,7 @@ const RestaurantTable = () => {
               </TableCell>
             </TableRow>
           </TableHead>
-          <TableBody>
+          <TableBody className="restaurantTableBody">
             {rows?.map((row) => (
               <TableRow key={row.fzname} className="tablerow">
                 <TableCell component="th" scope="row">

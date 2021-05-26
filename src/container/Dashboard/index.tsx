@@ -1,5 +1,5 @@
 
-import { Box, Button, FormControl, InputLabel, MenuItem, Select, Typography } from '@material-ui/core'
+import { Box, Button, FormControl, FormControlLabel, InputLabel, MenuItem, Radio, RadioGroup, Select, Typography } from '@material-ui/core'
 import axios from 'axios'
 import  React,{useState,useEffect}  from 'react'
 import Alert from '../../components/alert'
@@ -138,6 +138,7 @@ const Dashboard=()=>{
    const [rowsUpdated,setRowsUpdated]=useState(false)
    const [rows,setRows]=useState<NestedTableType[]>(row)
    const [timePeriod, setTimePeriod] = useState('current');
+   const [settingsClicked,setSettingClicked]=useState(false)
    const [dropDown, setDropDown] = useState([{name:"Current",value:"current"},{name:"July 2020 to Dec 2020",value:"July 2020 to Dec 2020"},{name:"Jan 2020 to Dec 2020",value:"Jan 2020 to Dec 2020"}]);
    const [data,setData]=React.useState<backend>() //for setting the variable with type
    //setData(backendData)
@@ -165,6 +166,9 @@ const Dashboard=()=>{
      console.log("deactivated")
    setIsHover(false)
    setSegment(segment)
+  }
+  const handleSettingsChange=()=>{
+
   }
    return(
       <div className="root">
@@ -232,7 +236,22 @@ const Dashboard=()=>{
             <Button className={viewTable==="restaurants"?"viewButtonsClicked":"viewButtons"} onClick={()=>setViewTable("restaurants")}>Restaurants</Button>
             <Button className={viewTable==="arl"?"viewButtonsClicked":"viewButtons"}onClick={()=>setViewTable("arl")}>ARL</Button>
             <Button className={viewTable==="do"?"viewButtonsClicked":"viewButtons"}onClick={()=>setViewTable("do")}>DO</Button>
+            <div className="settings" >
+         
+         <img src="../../assets/settings.svg" onClick={()=>setSettingClicked(!settingsClicked)}></img>
+      
+       <div id="sort-div" className={settingsClicked  ? "filteredHovered" : "filteredHoveredCancel"}>
+       <Typography className="defaultView">Set Default View</Typography>
+       <RadioGroup  name="defaultView"  onChange={handleSettingsChange}>
+ <FormControlLabel className="defaultView" value="restaurants" control={<Radio className="radio"/>} label="Restaurants" />
+ <FormControlLabel className="defaultView"  value="arl" control={<Radio />} label="ARL (Above Restaurant Leader)" />
+ <FormControlLabel className="defaultView" value="do" control={<Radio />} label="DO (District Operator)" />
+ <div className="filterButtons"> <Button variant='text' onClick={() => setSettingClicked(false)}>Cancel</Button> <Button variant="text" className="applyButton" onClick={handleSettingsChange}>Apply</Button></div>
+</RadioGroup>
+         </div>
+     </div>
         </div>
+       
         </div>
          
          {viewTable=="restaurants"&&<RestaurantTable />}
