@@ -13,6 +13,12 @@ import axios from "axios";
 import { ExpandLess } from "@material-ui/icons";
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { data } from "./tableresponse.json"
+import { CSVLink } from 'react-csv'
+import ReactExport from 'react-data-export';
+
+const ExcelFile = ReactExport.ExcelFile;
+const ExcelSheet = ReactExport.ExcelFile.ExcelSheet;
+const ExcelColumn = ReactExport.ExcelFile.ExcelColumn;
 
 const useStyles = makeStyles((theme: Theme) =>({
   table: {
@@ -97,6 +103,13 @@ const RestaurantTable = () => {
   setRows(checkArr)
    
   },[])
+  const handleExport=(format:string)=>{
+    return(
+      <ExcelFile>
+        <ExcelSheet data={rows} name="Restaurant Data"/>
+      </ExcelFile>
+    )
+  }
   const handleCheck=(event:any)=>{
     event.target.checked && filterValues.push(event.target.name)
     if(!event.target.checked){
@@ -142,7 +155,17 @@ const RestaurantTable = () => {
           <Button onClick={()=>handleSort("high")}>High to Low</Button>
 </FormControl></div>
 </div>
-<img src="../../assets/export excel.svg" className='exportIcon'></img>
+<div className="filtered">
+        <div className="filterHeadings"><img src="../../assets/export excel.svg" className='exportIcon' onClick={()=>setCancelClicked(!cancelClicked)}></img>
+        </div>
+        <div id="sort-div" className={!cancelClicked?"filteredHovered":"filteredHoveredCancel"}>
+<FormControl variant="outlined" className={classes.formControl}>
+
+          <Button><CSVLink data={rows} filename="Restaurant Data.csv">To CSV</CSVLink></Button>
+          <Button onClick={()=>handleExport("XLS")}>To XLS</Button>
+</FormControl></div>
+</div>
+
 </div>
 
 
