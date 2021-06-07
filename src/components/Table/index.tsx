@@ -14,11 +14,10 @@ import { ExpandLess } from "@material-ui/icons";
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { data } from "./tableresponse.json"
 import { CSVLink } from 'react-csv'
-import ReactExport from 'react-data-export';
+// import xlsexport from "xlsexport"
+// import ReactExport from 'react-data-export';
+import Workbook from 'react-excel-workbook'
 
-const ExcelFile = ReactExport.ExcelFile;
-const ExcelSheet = ReactExport.ExcelFile.ExcelSheet;
-const ExcelColumn = ReactExport.ExcelFile.ExcelColumn;
 
 const useStyles = makeStyles((theme: Theme) =>({
   table: {
@@ -103,13 +102,13 @@ const RestaurantTable = () => {
   setRows(checkArr)
    
   },[])
-  const handleExport=(format:string)=>{
-    return(
-      <ExcelFile>
-        <ExcelSheet data={rows} name="Restaurant Data"/>
-      </ExcelFile>
-    )
-  }
+  // const handleExport=(format:string)=>{
+  //   return(
+  //     <ExcelFile>
+  //       <ExcelSheet data={rows} name="Restaurant Data"/>
+  //     </ExcelFile>
+  //   )
+  // }
   const handleCheck=(event:any)=>{
     event.target.checked && filterValues.push(event.target.name)
     if(!event.target.checked){
@@ -162,7 +161,21 @@ const RestaurantTable = () => {
 <FormControl variant="outlined" className={classes.formControl}>
 
           <Button><CSVLink data={rows} filename="Restaurant Data.csv">To CSV</CSVLink></Button>
-          <Button onClick={()=>handleExport("XLS")}>To XLS</Button>
+<Workbook filename="Restaurant Data.xlsx" element={<Button >To Xls</Button>}>
+      <Workbook.Sheet data={rows} name="Sheet A">
+        <Workbook.Column label="Granularity" value="granularity"/>
+        <Workbook.Column label="FZ Code" value="fzcode"/>
+        <Workbook.Column label="FZ Name" value="fzname"/>
+        <Workbook.Column label="Period" value="period"/>
+        <Workbook.Column label="GM Name" value="gmname"/>
+        <Workbook.Column label="ARL Name" value="arlname"/>
+        <Workbook.Column label="DO Name" value="doname"/>
+        <Workbook.Column label="Address" value="restadress"/>
+        <Workbook.Column label="Star Rating" value="overallstarrating"/>
+        
+      </Workbook.Sheet>
+     
+    </Workbook>
 </FormControl></div>
 </div>
 
