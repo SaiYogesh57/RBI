@@ -1,15 +1,22 @@
 import { createStyles, makeStyles, Theme, Tooltip, Typography } from '@material-ui/core'
 import React, { useEffect, useRef, useState } from 'react'
 import CloseIcon from '@material-ui/icons/Close';
-import "./index.css"
+// import "./index.css"
 
 export interface AlertProps{
     alertType: string
 }
-
-
+export const TestProps={
+    getProps:(alertType:string)=>""
+}
 const InlineAlert = (props:AlertProps) => {
    
+   TestProps.getProps= (alertType:string)=>{
+    if(alertType=="Warning") return "Warning"
+    else if(alertType=="Neutral") return props.alertType
+    else if(alertType=="Success") return props.alertType
+    return ""
+}
 
 // const [closed,setClosed]=useState(false)
 const [alertSvg,setAlertSvg]=useState("")
@@ -34,3 +41,4 @@ return (
 }
 
 export default InlineAlert
+

@@ -1,7 +1,8 @@
 import React from 'react'
-import "./index.scss"
-const Scorecard=()=>{
 
+import "./index.scss"
+const HowitWorks=()=>{
+     
     return(
         <div className="root">
             <div>
@@ -83,4 +84,4 @@ const Scorecard=()=>{
         </div>
     )
 }
-export default Scorecard;
+export default HowitWorks;

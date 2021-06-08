@@ -112,7 +112,7 @@ const NestedTable = (props: TableProps) => {
     console.log("userroes2", userRows)
     return (
       userRows.map((row: TableData, index: number) =>
-        <TableRow key={index} className="tableRow">
+        <TableRow id='expand-row' key={index} className="tableRow">
 
           <TableCell component="th" scope="row">
             <Typography className="restaurantName">{index + 1}.   {row.fzname}</Typography>
@@ -224,16 +224,16 @@ const NestedTable = (props: TableProps) => {
 
 
   return (
-    <div>
+    <div className="nestedTable">
       <div className="tableUtils">
         <div className="filtered">
           <div className="filterHeadings"><Typography>Filter By</Typography>
-            {!cancelClicked && utilClicked === "filter" ? <ExpandLess onClick={() => setCancelClicked(true)} /> : <ExpandMoreIcon onClick={() => { setCancelClicked(false); setUtilClicked("filter") }} />}
+            {!cancelClicked && utilClicked === "filter" ? <ExpandLess onClick={() => setCancelClicked(true)} /> : <ExpandMoreIcon id="filter-button" onClick={() => { setCancelClicked(false); setUtilClicked("filter") }} />}
 
           </div>
-          <div className={!cancelClicked && utilClicked === "filter" ? "filteredHovered" : "filteredHoveredCancel"}>
+          <div id="filter-div" className={!cancelClicked && utilClicked === "filter" ? "filteredHovered" : "filteredHoveredCancel"}>
             <FormControl variant="outlined" className={classes.formControl}>
-              {rows.map(filteredRow => <FormControlLabel control={<Checkbox onChange={handleCheck} name={filteredRow.fzname} className="checkBox" ></Checkbox>} label={filteredRow.fzname.split(" ")[0]} />)}
+              {rows.map((filteredRow,index) => <FormControlLabel key={index} control={<Checkbox onChange={handleCheck} name={filteredRow.fzname} className="checkBox" ></Checkbox>} label={filteredRow.fzname.split(" ")[0]} />)}
 
               <div className="filterButtons"> <Button variant='text' onClick={() => setCancelClicked(true)}>Cancel</Button> <Button variant="text" className="applyButton" onClick={handleFilter}>Apply</Button></div>
             </FormControl>
@@ -243,10 +243,10 @@ const NestedTable = (props: TableProps) => {
 
         <div className="filtered">
           <div className="filterHeadings"><Typography>Sort By</Typography>
-            {!cancelClicked && utilClicked === "sort" ? <ExpandLess onClick={() => setCancelClicked(true)} /> : <ExpandMoreIcon onClick={() => { setCancelClicked(false); setUtilClicked("sort") }} />}
+            {!cancelClicked && utilClicked === "sort" ? <ExpandLess onClick={() => setCancelClicked(true)} /> : <ExpandMoreIcon id="sort-button" onClick={() => { setCancelClicked(false); setUtilClicked("sort") }} />}
 
           </div>
-          <div className={!cancelClicked && utilClicked === "sort" ? "filteredHovered" : "filteredHoveredCancel"}>
+          <div id="sort-div" className={!cancelClicked && utilClicked === "sort" ? "filteredHovered" : "filteredHoveredCancel"}>
             <FormControl variant="outlined" className={classes.formControl}>
               <Button onClick={() => handleSort("low")}>Low to High</Button>
               <Button onClick={() => handleSort("high")}>High to Low</Button>
@@ -277,10 +277,10 @@ const NestedTable = (props: TableProps) => {
               </TableCell>
             </TableRow>
           </TableHead>
-          <TableBody>
-            {filteredRows?.map((row) => (
+          <TableBody className="nestedTableBody" key={brandName}>
+            {filteredRows?.map((row,index) => (
               <>
-                <TableRow key={row.fzname} className="tablerow">
+                <TableRow key={index} className="tablerow">
                   <TableCell component="th" scope="row">
                     <Typography className="restaurantName">{row.fzname}</Typography>
                     <Typography className="restaurantPlace">
@@ -382,7 +382,7 @@ const NestedTable = (props: TableProps) => {
                         src="../assets/Delta Indicator.svg"
                       ></img>
 
-                      {isVisible && (expandUser == row.fzname) ? <RemoveIcon onClick={() => { setIsVisible(false); setExpandUser("") }} className="AddIcon" /> : <AddIcon onClick={() => { setIsVisible(true); setExpandUser(row.fzname) }} className="AddIcon" />}
+                      {isVisible && (expandUser == row.fzname) ? <RemoveIcon onClick={() => { setIsVisible(false); setExpandUser("") }} className="AddIcon" /> : <AddIcon id="expand-button" onClick={() => { setIsVisible(true); setExpandUser(row.fzname) }} className="AddIcon" />}
                     </Typography>
                     <Typography className="previousValue">
                       Previous:{row.prevbrandstandards}
