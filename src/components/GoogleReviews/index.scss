@@ -1,0 +1,78 @@
+.root{
+    .rest-details{
+        .rest-detail{
+            .rest-name{
+                text-align: left;
+                font: normal normal normal 39px Flame Sans;
+                letter-spacing: 0px;
+                color: #222222;
+            }
+            .rest-address{
+                text-align: left;
+                font: normal normal normal 20px Flame Sans;
+                letter-spacing: 0px;
+                color: #484848;
+            }
+        }
+    }
+    .headers{
+        display: flex;
+        align-items: center;
+        .headers-title{
+            text-align: left;
+            font: normal normal normal 31px Flame Sans;
+            letter-spacing: 0px;
+            color: #222222;
+        }
+        .headers-stars{
+            text-align: left;
+            font: normal normal normal 20px Flame Sans;
+            letter-spacing: 0px;
+            color: #222222;
+            margin-left: 10px;
+        }
+    }
+    .reviews{
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        grid-template-rows: repeat(4,1fr);
+        .angry{
+            border-left:8px solid  #D90F06 ;
+        }
+        .success{
+            border-left:8px solid #F3AD3D ;
+        }
+        .neutral{
+            border-left:8px solid  #F27900  ;
+        }
+
+    .review-container{
+        background: #FFFFFF 0% 0% no-repeat padding-box;
+        box-shadow: 0px 3px 6px #00000029;
+        border-radius: 10px;
+        padding:0px 20px;
+        margin:5px;
+
+        .review-head{
+            display: flex;
+            align-items: center;
+            .review-star{
+                width: 28px;
+                height: 28px;
+            }
+        }
+        .review-content{
+            display: flex;
+            justify-content: space-between;
+            .review-desc{
+                text-align: left;
+                font: normal normal normal 16px Flame Sans;
+                letter-spacing: 0px;
+                color: #484848;
+                margin-left: 10px;
+            }
+        }
+    }
+    }
+
+}
