@@ -1,12 +1,15 @@
-import { Button, FormControl, InputLabel, MenuItem, Select, Typography } from "@material-ui/core";
+import { Button, FormControl, IconButton, InputAdornment, InputLabel, MenuItem, OutlinedInput, Select, Typography } from "@material-ui/core";
 import { ExpandLess } from "@material-ui/icons";
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import Pagination from '@material-ui/lab/Pagination';
 import React, { useState } from "react";
 import "./index.scss";
 
 const GoogleReviews = () => {
     const [cancelClicked,setCancelClicked]=useState(true)
     const [utilClicked,setUtilClicked]=useState("")
+    const [page, setPage] = React.useState(1);
+
     const handleSort=(sort:string)=>{
 
     }
@@ -60,6 +63,10 @@ const GoogleReviews = () => {
         "I just paid $25.11 for a whopper original chicken leg coke and medium onion rings. I ordered the 2 for $5 and got only 1 of each. Ordered 2 whoppers and 2 originals. Plus I’m missing my fries too!!! Then they were microwaving coffee. Worst service!!! I try calling to let them know I’m missing items and no one picks up",
     },
   ];
+  const handlePage = (event: React.ChangeEvent<unknown>, value: number) => {
+    setPage(value);
+  };
+
   return (
     <div className="root">
       <div className="rest-details">
@@ -84,6 +91,28 @@ const GoogleReviews = () => {
           </p>
         </div>
         <div className="headers-right">
+         
+          <FormControl  variant="outlined">
+          {/* <InputLabel htmlFor="outlined-adornment-password">Search</InputLabel> */}
+          <OutlinedInput
+            id="outlined-adornment-search"
+            placeholder="Search"
+            className="search-input" 
+            startAdornment={
+              <InputAdornment position="start">
+                <IconButton
+                  aria-label="toggle password visibility"
+                  
+                  edge="start"
+                >
+                  <img src="../../assets/icons8-search.svg"></img>
+                </IconButton>
+              </InputAdornment>
+            }
+          
+          />
+        </FormControl>
+         
 <div className="filtered">
         <div className="filterHeadings"><Typography>Sort By</Typography>
        {!cancelClicked&&utilClicked==="sort"?<ExpandLess onClick={()=>setCancelClicked(true)}/>:<ExpandMoreIcon id="sort-button" onClick={()=>{setCancelClicked(false);setUtilClicked("sort")}}/>}
@@ -143,6 +172,7 @@ const GoogleReviews = () => {
           </div>
         ))}
       </div>
+      <Pagination variant="text" count={3} page={page}  onChange={handlePage}/>
     </div>
   );
 };
