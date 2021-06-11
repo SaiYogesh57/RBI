@@ -4,68 +4,31 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Pagination from '@material-ui/lab/Pagination';
 import React, { useState } from "react";
 import "./index.scss";
-
+import { data } from "./reviews.json"
 const GoogleReviews = () => {
     const [cancelClicked,setCancelClicked]=useState(true)
     const [utilClicked,setUtilClicked]=useState("")
     const [page, setPage] = React.useState(1);
+    const [timePeriod, setTimePeriod] = useState('current');
+   
+   const [dropDown, setDropDown] = useState([{name:"July 2020 to Dec 2020",value:"July 2020 to Dec 2020"},{name:"Jan 2020 to Dec 2020",value:"Jan 2020 to Dec 2020"}]);
 
     const handleSort=(sort:string)=>{
-
+      if(sort==="low") setPageItems(data.sort((a,b)=>a.stars-b.stars))
+      else if(sort==="high") setPageItems(data.sort((a,b)=>b.stars-a.stars));
+      setCancelClicked(true)
     }
-  const reviews = [
-    {
-      date: "2/20/21",
-      stars: 3,
-      review:
-        "I just paid $25.11 for a whopper original chicken leg coke and medium onion rings. I ordered the 2 for $5 and got only 1 of each. Ordered 2 whoppers and 2 originals. Plus I’m missing my fries too!!! Then they were microwaving coffee. Worst service!!! I try calling to let them know I’m missing items and no one picks up",
-    },
-    {
-      date: "2/20/21",
-      stars: 3,
-      review:
-        "I just paid $25.11 for a whopper original chicken leg coke and medium onion rings. I ordered the 2 for $5 and got only 1 of each. Ordered 2 whoppers and 2 originals. Plus I’m missing my fries too!!! Then they were microwaving coffee. Worst service!!! I try calling to let them know I’m missing items and no one picks up",
-    },
-    {
-      date: "2/20/21",
-      stars: 2,
-      review:
-        "I just paid $25.11 for a whopper original chicken leg coke and medium onion rings. I ordered the 2 for $5 and got only 1 of each. Ordered 2 whoppers and 2 originals. Plus I’m missing my fries too!!! Then they were microwaving coffee. Worst service!!! I try calling to let them know I’m missing items and no one picks up",
-    },
-    {
-      date: "2/20/21",
-      stars: 4,
-      review:
-        "I just paid $25.11 for a whopper original chicken leg coke and medium onion rings. I ordered the 2 for $5 and got only 1 of each. Ordered 2 whoppers and 2 originals. Plus I’m missing my fries too!!! Then they were microwaving coffee. Worst service!!! I try calling to let them know I’m missing items and no one picks up",
-    },
-    {
-      date: "2/20/21",
-      stars: 3,
-      review:
-        "I just paid $25.11 for a whopper original chicken leg coke and medium onion rings. I ordered the 2 for $5 and got only 1 of each. Ordered 2 whoppers and 2 originals. Plus I’m missing my fries too!!! Then they were microwaving coffee. Worst service!!! I try calling to let them know I’m missing items and no one picks up",
-    },
-    {
-      date: "2/20/21",
-      stars: 3,
-      review:
-        "I just paid $25.11 for a whopper original chicken leg coke and medium onion rings. I ordered the 2 for $5 and got only 1 of each. Ordered 2 whoppers and 2 originals. Plus I’m missing my fries too!!! Then they were microwaving coffee. Worst service!!! I try calling to let them know I’m missing items and no one picks up",
-    },
-    {
-      date: "2/20/21",
-      stars: 5,
-      review:
-        "I just paid $25.11 for a whopper original chicken leg coke and medium onion rings. I ordered the 2 for $5 and got only 1 of each. Ordered 2 whoppers and 2 originals. Plus I’m missing my fries too!!! Then they were microwaving coffee. Worst service!!! I try calling to let them know I’m missing items and no one picks up",
-    },
-    {
-      date: "2/20/21",
-      stars: 1,
-      review:
-        "I just paid $25.11 for a whopper original chicken leg coke and medium onion rings. I ordered the 2 for $5 and got only 1 of each. Ordered 2 whoppers and 2 originals. Plus I’m missing my fries too!!! Then they were microwaving coffee. Worst service!!! I try calling to let them know I’m missing items and no one picks up",
-    },
-  ];
+  
+  const [pageItems,setPageItems]=useState(data.slice(0,8))
   const handlePage = (event: React.ChangeEvent<unknown>, value: number) => {
     setPage(value);
+    setPageItems(data.slice((value-1)*8,value*8))
   };
+  const handleSearch=(event)=>{
+    const searchTerm=event.target.value
+   const searchArray=data.filter(rev=>rev.review.indexOf(searchTerm)>-1)
+   setPageItems(searchArray)
+  }
 
   return (
     <div className="root">
@@ -75,6 +38,27 @@ const GoogleReviews = () => {
           <p className="rest-address">31st & 5th Ave,NY 0000</p>
         </div>
         <img src="../../assets/Average level star.svg" className="average-svg"></img>
+        <div className="timePeriodDropDown">
+          <FormControl className="formControl" variant="outlined">
+            <InputLabel shrink id='demo-simple-select-placeholder-label-label'>
+              Time Period:
+            </InputLabel>
+            <Select
+              labelId='demo-simple-select-placeholder-label-label'
+              id='demo-simple-select-placeholder-label'
+              value={timePeriod}
+              onChange={(event) => setTimePeriod(String(event.target?.value))}
+              displayEmpty
+              className="selectEmpty"
+            >
+              {dropDown.map(({ value, name }, index) => (
+                <MenuItem key={index} value={value}>
+                  {name}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+        </div>
       </div>
 
       <div className="headers">
@@ -97,7 +81,8 @@ const GoogleReviews = () => {
           <OutlinedInput
             id="outlined-adornment-search"
             placeholder="Search"
-            className="search-input" 
+            className="search-input"
+            onChange={handleSearch} 
             startAdornment={
               <InputAdornment position="start">
                 <IconButton
@@ -127,7 +112,7 @@ const GoogleReviews = () => {
         </div>
       </div>
       <div className="reviews">
-        {reviews.map((review, index) => (
+        {pageItems.map((review, index) => (
           <div
             className={
               review.stars <= 2
@@ -172,7 +157,7 @@ const GoogleReviews = () => {
           </div>
         ))}
       </div>
-      <Pagination variant="text" count={3} page={page}  onChange={handlePage}/>
+      <Pagination variant="text" count={Math.ceil(data.length/8)} page={page}  onChange={handlePage}/>
     </div>
   );
 };
