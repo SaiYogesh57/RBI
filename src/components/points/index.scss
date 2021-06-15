@@ -1,0 +1,67 @@
+.points {
+  padding: 0px 40px;
+  .points-title {
+    font: normal normal bold 27px Chicken Sans;
+    letter-spacing: 0px;
+    color: #222222;
+    text-transform: capitalize;
+  }
+  .points-container {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+
+    .points-card {
+      background-color: lemonchiffon;
+      padding: 10px;
+      border-radius: 6px;
+   
+display:grid;
+
+
+      .points-card-container {
+        grid-row-start: 1;
+        grid-row-end: 8;
+        .points-card-detail {
+          text-align: left;
+          font: normal normal normal 15px Chicken Sans;
+          letter-spacing: 0px;
+        }
+        .points-card-period {
+          font: normal normal normal 12px Chicken Sans;
+          letter-spacing: 0px;
+          color: #7d7f7d;
+        }
+        .points-card-category {
+          font: normal normal bold 15px Chicken Sans;
+          letter-spacing: 0px;
+          color: #222222;
+        }
+        .table-cell {
+          font: normal normal normal 15px Chicken Sans;
+          letter-spacing: 0px;
+          color: #484848;
+          li::marker {
+            color: #ff7d00;
+          }
+        }
+        .table-cell-points {
+          font: normal normal normal 15px Chicken Sans;
+          letter-spacing: 0px;
+          color: #484848;
+          text-align: right;
+        }
+      }
+      .points-card-categories {
+        
+        text-align: center;
+        border-top: 1px solid #ebebeb;
+        cursor: pointer;
+        padding-top: 10px;
+        color: #ff7d00;
+        font: normal normal bold 15px Chicken Sans;
+      }
+    }
+  }
+}

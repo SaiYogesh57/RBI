@@ -1,0 +1,40 @@
+{
+    "data":[
+        {
+            "detail":"Cleanliness & Maintenance deducted by 4pts. This negatively impacted your Brand Standards rating by 4.1%",
+            "period":"REV reported on Jan 01, 2021",
+            "category":"C&M",
+            "standards":[
+                {"standard":"Kitchen equipments are clean and free of build-up","points":-2},
+                {"standard":"Back of the house is clean and free of build-up","points":-2}
+            ]
+        },
+        {
+            "detail":"Food Quality deducted by 3pts. This negatively impacted your Brand Standards rating by 1.4%",
+            "period":"REV reported on Jan 01, 2021",
+            "category":"FQ",
+            "standards":[
+                {"standard":"Restaurant does not have any expired product","points":-2}
+
+            ]
+        },
+        {
+            "detail":"Guest Service & Experience deducted by 1pts. This negatively impacted your Brand Standards rating by 1.4%",
+            "period":"REV reported on Jan 01, 2021",
+            "category":"GS&E",
+            "standards":[
+                {"standard":"Team members and managers meet uniform and…","points":-2}
+
+            ]
+        },
+        {
+            "detail":"You are all good on People. Keep it up!",
+            "period":"REV reported on Jan 01, 2021",
+            "category":"Ppl",
+            "standards":[
+                {"standard":"You have 0 pt deducted on all categories"}
+                
+            ]
+        }
+    ]
+}
