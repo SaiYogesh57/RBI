@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 import AppBar from "@material-ui/core/AppBar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -7,7 +6,8 @@ import Toolbar from "@material-ui/core/Toolbar";
 import { makeStyles } from "@material-ui/core/styles";
 import classNames from "classnames"
 import { List, ListItem, Theme, Box} from "@material-ui/core";
-import LeftLinks from "../LeftLinks/index";
+import RightLinks from "../RightLinks/index";
+import "./indexPLK.scss"
 
 interface Props {}
 
@@ -33,12 +33,12 @@ const useStyles = makeStyles((theme: Theme) => ({
     flexGrow: 1,
     marginRight: "10px",
     textTransform: "none",
-    
-    fontSize:"20px",
+    whiteSpace: "nowrap",
+    fontSize:"39px",
     color: "#FFFFFF",
-    fontFamily:"Chicken SansBold"
+    fontFamily:"FlameSans-Bold"
   },
-  
+
   leftheader: {
     flex: ".8",
     textAlign: "end",
@@ -58,18 +58,21 @@ const useStyles = makeStyles((theme: Theme) => ({
   appBar: {
     display: "flex",
     width: "100%",
+    height: "75px",
     alignItems: "center",
     flexFlow: "row nowrap",
     justifyContent: "space-between",
     // padding: "10px 0px",
-    backgroundColor: "#FF7D00",
+
+    backgroundColor:"#FF7D00",
     [theme.breakpoints.down("sm")]: {
       zIndex: 3000,
     },
   },
-  appBarBK:{
+  appBarBK: {
     display: "flex",
     width: "100%",
+    height: "75px",
     alignItems: "center",
     flexFlow: "row nowrap",
     justifyContent: "space-between",
@@ -81,14 +84,19 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   brandLogoOnScroll: {
     // position: "absolute",
-    width: "30px",
-    height:"30px"
+    width: "36.31px",
+    height:"40px"
+  },
+  brandLogoOnScrollPLK: {
+    // position: "absolute",
+    width: "92.31px",
+    height:"45px"
   },
   inputRoot: {
     color: "#fff",
     height:"45px",
     padding:"0px",
-   
+
   },
   popperBackground: {
     background: "white",
@@ -110,13 +118,13 @@ padding:"2px"
 
 const Header: React.FC<Props> = () => {
   const classes = useStyles();
-  
-  const [brandName,setBrandName]=useState("BK")
-  const appBarClasses = classNames({
-    [classes.appBar]: true,
-    [classes.absolute]: true,
-    [classes.fixed]: true,
-  });
+  const [brandName,setBrandName]=useState("PLK")
+
+  // const appBarClasses = classNames({
+  //   ["appBar]: true,
+  //   ["absolute]: true,
+  //   ["fixed]: true,
+  // });
 
 
   return (
@@ -125,24 +133,26 @@ const Header: React.FC<Props> = () => {
       <AppBar
         // color="inherit"
         position="sticky"
-        className={brandName=="BK"?classes.appBarBK:classes.appBar}
+       
       >
-        <Toolbar className={classes.toolbar}>
-          <List className={classes.navList}>
-           <ListItem className={classes.rightHeader}>
+        <Toolbar className={"toolbar"}>
+          <List className="navList">
+           <ListItem className={"rightHeader"}>
               <Button >
                 <img
                   alt="logo"
-                  src={brandName=="BK"?"../../assets/burger-king.svg":"../../assets/PLK logo.svg"}
-                  className={classes.brandLogoOnScroll}
+                   src={brandName=="PLK"?"/assets/PLK Logo.svg":"/assets/burger-king.svg"}
+                  //  "/assets/burger-king-new-2021-seeklogo.com-3.svg"}
+               
+                  className={"brandLogoOnScroll"}
                 />
               </Button>
-              <Button className={classes.scoreCard} >
+              <Button className={"scoreCard"} >
                 Success Scorecard
               </Button>
             </ListItem>
-           <Box className={classes.leftheader}>
-            <LeftLinks />
+           <Box className="leftheader">
+            <RightLinks />
           </Box>
           </List>
         </Toolbar>

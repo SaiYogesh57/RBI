@@ -1,0 +1,64 @@
+
+    .MuiAppBar-root {
+      display: flex !important;
+      width: 100% !important;
+     height: 100px;
+      align-items: center;
+      flex-flow: row nowrap;
+      justify-content: space-between;
+      background-color:#ff7d00 !important;
+
+      .toolbar {
+        flex-wrap: wrap;
+        display: flex !important;
+        flex-grow: 1;
+        color: #fff;
+        width: 100%
+      };
+      .scoreCard{
+        flex-grow: 1;
+        margin-right: 10px;
+        text-transform: none;
+        white-Space: nowrap;
+        font-Size:39px;
+        color: #FFFFFF;
+        font-family:"Chicken SansBold";
+        
+      };
+    }
+
+    .navList {
+      display: flex !important;
+      flex: 1;
+      padding: 0px;
+      align-items: center;
+    };
+    .MuiList-root {
+      display: flex !important;
+      flex: 1;
+      padding: 0px;
+      align-items: center;
+    }
+    .rightHeader {
+      flex: .2 ;
+    };
+    .MuiBox-root-19 {
+      flex: 0.8;
+      }
+
+  
+    .leftheader {
+      flex: .8;
+      text-align: end;
+     
+    };
+    .brandLogoOnScroll {
+      
+      width: "92.31px";
+      height:"45px"
+    };
+    
+
+    .iconButton{
+  padding:"2px"
+    }

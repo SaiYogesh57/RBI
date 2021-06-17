@@ -14,7 +14,7 @@ function App() {
     <div className="App">
       <Header/>
       <Router>
-        <Route exact path="/" component={PointsDetails}/>
+        <Route exact path="/" component={GoogleReviews}/>
         <Route  path='/welcomeBK' component={WelcomeBK} />
         <Route  path='/gradingBK' component={GradingPageBK} />
         <Route  path='/scorecard' component={HowitWorks} />
