@@ -10,12 +10,13 @@ import HowitWorks from './components/HowitWorks';
 import GoogleReviews from "./components/GoogleReviews"
 import PointsDetails from './components/points';
 import Comments from './components/Comments';
+import EmployeeTable from './components/EmployeeTable';
 function App() {
   return (
     <div className="App">
       <Header/>
       <Router>
-        <Route exact path="/" component={Comments}/>
+        <Route exact path="/" component={EmployeeTable}/>
         <Route  path='/welcomeBK' component={WelcomeBK} />
         <Route  path='/gradingBK' component={GradingPageBK} />
         <Route  path='/scorecard' component={HowitWorks} />
