@@ -1,0 +1,11 @@
+.axis path, .axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+}
+rect {
+    fill: #408441;
+}
+g>text{
+    font: 20px Flame Sans;
+}

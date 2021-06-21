@@ -1,0 +1,42 @@
+.emp-table {
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+border-radius: 10px;
+padding: 5px;
+
+.MuiPagination-root	{
+    margin-left: 45%;
+    margin-top: 10px;
+  
+letter-spacing: 0px;
+.MuiPaginationItem-root{
+font: normal normal normal 27px Chicken Sans;
+}
+.Mui-selected{
+color: #FF7D00;
+background-color: transparent;
+
+}
+}
+
+  .emp-title {
+    text-align: left;
+    font: normal normal normal 31px/46px Flame Sans;
+    letter-spacing: 0px;
+    color: #222222;
+  }
+  .table {
+    .emp-table-title {
+      text-align: left;
+      font: normal normal normal 25px/30px Flame Sans;
+      letter-spacing: 0px;
+      color: #222222;
+      opacity: 1;
+    }
+    .emp-cell {
+      text-align: center;
+      font: normal normal normal 20px/24px Flame Sans;
+      letter-spacing: 0px;
+      color: #222222;
+    }
+  }
+}
